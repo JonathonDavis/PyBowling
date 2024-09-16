@@ -1,73 +1,74 @@
-import tkinter as tk
+from random import random
 
-class BowlingLogic:
-    def __init__(self):
-        self.score = 0
-        self.frame = 1
-        self.roll = 1
-        self.pins = 10
-        self.strike = False
-        self.spare = False
-        self.strikeBonus = 0
-        self.spareBonus = 0
-        self.frameScore = 0
-        self.rollScore = 0
-        self.frameScores = []
-        self.rollScores = []
+from Bowling import Bowling
 
-    def knocked_pins(self, pins):
-        self.rollScore = pins
-        self.rollScores.append(pins)
+davis = Bowling("Davis")
 
-        if self.strike:
-            self.strikeBonus += pins
-            if self.roll == 2:
-                self.strike = False
-                self.score += self.strikeBonus
-                self.strikeBonus = 0
+# Test case 1: All gutter balls
+for _ in range(20):
+    davis.roll(0)
 
-        if self.spare:
-            self.spareBonus += pins
-            self.spare = False
-            self.score += self.spareBonus
-            self.spareBonus = 0
-
-        self.frameScore += pins
-
-        if self.roll == 1:
-            if pins == 10:  # Strike
-                self.strike = True
-                self.frameScores.append(self.frameScore)
-                self.score += self.frameScore
-                self.frameScore = 0
-                self.frame += 1
-            else:
-                self.roll = 2
-        elif self.roll == 2:
-            if self.frameScore == 10:  # Spare
-                self.spare = True
-            self.frameScores.append(self.frameScore)
-            self.score += self.frameScore
-            self.frameScore = 0
-            self.frame += 1
-            self.roll = 1
-
-        if self.frame > 10:
-            print("Game Over")
-        else:
-            self.pins = 10 - self.rollScore if self.roll == 2 else 10
-
-    def get_score(self):
-        return self.score
-
-    def get_frameScore(self):
-        return self.frameScores
+print("\nAll Gutter balls")
+print('-' * len(
+    '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
+davis.print_score_table()
+print('-' * len(
+    '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
 
 
-# Example usage:
-game = BowlingLogic()
+davis = Bowling("Davis")
 
-for _ in range(12):
-    game.knocked_pins(10)
-print(game.get_score())  # 300
-print(game.get_frameScore())
+# Test case 2: All Strikes
+for _ in range(20):
+    davis.roll(10)
+
+print('\nAll Strikes')
+print('-' * len(
+    '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
+davis.print_score_table()
+print('-' * len(
+    '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
+
+
+davis = Bowling("Davis")
+
+# Test case 3: All Spares
+for _ in range(21):
+    davis.roll(5)
+
+print('\nAll Spares')
+print('-' * len(
+    '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
+davis.print_score_table()
+print('-' * len(
+    '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
+
+
+davis = Bowling("Davis")
+
+# Test case 4: Random rolls
+davis.roll(10)
+davis.roll(9)
+davis.roll(1)
+davis.roll(5)
+davis.roll(5)
+davis.roll(7)
+davis.roll(2)
+davis.roll(10)
+davis.roll(10)
+davis.roll(3)
+davis.roll(6)
+davis.roll(7)
+davis.roll(3)
+davis.roll(7)
+davis.roll(1)
+davis.roll(9)
+davis.roll(0)
+
+
+print('\nRandom rolls')
+print('-' * len(
+    '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
+davis.print_score_table()
+print('-' * len(
+    '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
