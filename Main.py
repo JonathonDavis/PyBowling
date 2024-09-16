@@ -15,7 +15,6 @@ davis.print_score_table()
 print('-' * len(
     '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
 
-
 davis = Bowling("Davis")
 
 # Test case 2: All Strikes
@@ -29,7 +28,6 @@ davis.print_score_table()
 print('-' * len(
     '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
 
-
 davis = Bowling("Davis")
 
 # Test case 3: All Spares
@@ -42,7 +40,6 @@ print('-' * len(
 davis.print_score_table()
 print('-' * len(
     '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
-
 
 davis = Bowling("Davis")
 
@@ -65,10 +62,21 @@ davis.roll(1)
 davis.roll(9)
 davis.roll(0)
 
-
 print('\nRandom rolls')
 print('-' * len(
     '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
 davis.print_score_table()
 print('-' * len(
     '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
+
+
+
+print("\n\nShow that the frames can update with each roll\n")
+davis = Bowling("Davis")
+for i in range(20):
+    pins = input(f"Roll {i + 1}, Pins Knocked: ")
+    davis.roll(int(pins))
+    davis.print_score_table()
+    print('-' * len(
+        '          Frame 1     Frame 2     Frame 3     Frame 4     Frame 5     Frame 6     Frame 7     Frame 8     Frame 9     Frame 10    Total'))
+
